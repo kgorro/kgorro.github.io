@@ -119,7 +119,6 @@
     margin: 0 0 10px;
   }
   .eyebrow.amber{ color: var(--amber); }
-  .eyebrow::before{ content: "// "; color: var(--text-faint); }
 
   h2{
     font-family: var(--mono);
@@ -333,6 +332,7 @@
       <li><a href="#top" class="rail-link" data-target="top"><span class="dot"></span>session</a></li>
       <li><a href="#skills" class="rail-link" data-target="skills"><span class="dot"></span>symbols</a></li>
       <li><a href="#experience" class="rail-link" data-target="experience"><span class="dot"></span>call stack</a></li>
+      <li><a href="#projects" class="rail-link" data-target="projects"><span class="dot"></span>projects</a></li>
       <li><a href="#education" class="rail-link" data-target="education"><span class="dot"></span>build chain</a></li>
       <li><a href="#contact" class="rail-link" data-target="contact"><span class="dot"></span>handles</a></li>
     </ul>
@@ -387,6 +387,8 @@
           <span class="chip amber">Computer Vision — video processing</span>
           <span class="chip amber">Natural Language Processing</span>
           <span class="chip amber">Large Language Models (OpenAI)</span>
+          <span class="chip amber">OpenAI Assistants API</span>
+          <span class="chip amber">OpenAI Responses API</span>
         </div>
       </div>
     </div>
@@ -462,6 +464,27 @@
     </div>
   </section>
 
+  <section id="projects">
+    <p class="eyebrow amber">side process</p>
+    <h2>Projects</h2>
+
+    <div class="frame reveal">
+      <div class="frame-meta"><span class="frame-id">proj</span><span class="frame-dates">JAN 2025 — MAR 2026</span></div>
+      <h3 class="frame-title">EigoAI <span class="frame-role">— English language learning platform</span></h3>
+      <div class="frame-bar"><div class="frame-bar-track"><div class="frame-bar-fill" style="width:16%"></div></div><span class="frame-bar-label">≈15 mo, completed</span></div>
+      <ul class="frame-details">
+        <li>Built an English-learning platform on PHP and Node.js, with a Vue.js front end.</li>
+        <li>Integrated OpenAI's Assistants API to drive conversational lesson interactions.</li>
+        <li>Migrated the platform from the OpenAI Assistants API to the newer Responses API, and resolved the Vue.js component issues the migration introduced.</li>
+        <li>Evaluated and tuned prompting and tool-calling behavior across OpenAI models to keep lesson feedback accurate and on-topic.</li>
+      </ul>
+      <div class="frame-tags">
+        <span class="chip">PHP</span><span class="chip">NodeJs</span><span class="chip">Vue.js</span>
+        <span class="chip amber">OpenAI Assistants API</span><span class="chip amber">OpenAI Responses API</span>
+      </div>
+    </div>
+  </section>
+
   <section id="education">
     <p class="eyebrow amber">build chain</p>
     <h2>Educational background</h2>
@@ -526,7 +549,6 @@
         <a href="mailto:marjaga9@yahoo.com">marjaga9@yahoo.com</a>
       </div>
     </div>
-    <p class="note">// publishing personal phone numbers/emails of references on a public page is visible to anyone — swap to "available on request" if that's a concern.</p>
   </section>
 
   <footer>
