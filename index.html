@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ken D. Gorro, DIT — Resume</title>
+<meta name="description" content="Ken D. Gorro, DIT — Senior C++/.NET Developer, Systems Engineer, IEEE Member.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0a0d12;
+    --panel: #10141b;
+    --panel-2: #141a23;
+    --border: #232a35;
+    --text: #d7dce3;
+    --text-dim: #8b94a3;
+    --text-faint: #5b6472;
+    --green: #5fd38d;
+    --green-dim: #3a8a5e;
+    --amber: #e3a44d;
+    --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --sans: 'IBM Plex Sans', -apple-system, system-ui, sans-serif;
+    --rail-w: 220px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.55;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: -1px -1px;
+    background-attachment: fixed;
+  }
+
+  a{ color: var(--green); text-decoration: none; border-bottom: 1px solid transparent; }
+  a:hover{ border-bottom-color: var(--green); }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--amber); outline-offset: 2px; }
+
+  /* ---------- layout ---------- */
+  .shell{ display:flex; min-height:100vh; }
+
+  .rail{
+    position: fixed;
+    top:0; left:0; bottom:0;
+    width: var(--rail-w);
+    border-right: 1px solid var(--border);
+    background: rgba(10,13,18,0.92);
+    backdrop-filter: blur(6px);
+    padding: 28px 0 20px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    z-index: 50;
+  }
+  .rail-top{ padding: 0 22px; }
+  .rail-brand{
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .08em;
+    color: var(--text-faint);
+    margin-bottom: 26px;
+  }
+  .rail-brand b{ color: var(--green); font-weight:500; }
+
+  .rail-list{ list-style:none; margin:0; padding:0; }
+  .rail-list li{ position:relative; }
+  .rail-link{
+    display:flex; align-items:center; gap:10px;
+    padding: 9px 22px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--text-dim);
+    border-left: 2px solid transparent;
+    transition: color .15s, border-color .15s, background .15s;
+  }
+  .rail-link:hover{ color: var(--text); border-bottom:none; background: rgba(255,255,255,0.02); }
+  .rail-link .dot{
+    width:6px; height:6px; border-radius:50%;
+    background: var(--text-faint);
+    flex-shrink:0;
+    transition: background .2s, box-shadow .2s;
+  }
+  .rail-link.active{ color: var(--green); border-left-color: var(--green); background: rgba(95,211,141,0.06); }
+  .rail-link.active .dot{ background: var(--green); box-shadow: 0 0 0 3px rgba(95,211,141,0.18); }
+
+  .rail-foot{
+    padding: 0 22px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--text-faint);
+    letter-spacing: .04em;
+  }
+
+  .rail-toggle{ display:none; }
+
+  main{
+    margin-left: var(--rail-w);
+    width: calc(100% - var(--rail-w));
+    max-width: 920px;
+    padding: 64px 56px 100px;
+  }
+
+  section{ padding-top: 18px; margin-bottom: 92px; scroll-margin-top: 24px; }
+  section:last-of-type{ margin-bottom: 40px; }
+
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--green);
+    letter-spacing: .04em;
+    margin: 0 0 10px;
+  }
+  .eyebrow.amber{ color: var(--amber); }
+  .eyebrow::before{ content: "// "; color: var(--text-faint); }
+
+  h2{
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--text);
+    margin: 0 0 28px;
+    letter-spacing: -.01em;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{ margin-bottom: 80px; padding-top: 8px; }
+  .hero-photo{
+    width: 88px; height: 88px;
+    border-radius: 4px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    margin-bottom: 24px;
+    filter: grayscale(15%) contrast(1.02);
+  }
+  .hero h1{
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.1;
+    margin: 0 0 6px;
+    color: #f1f3f6;
+  }
+  .cursor{
+    display:inline-block;
+    width: 11px; height: 30px;
+    background: var(--green);
+    margin-left: 6px;
+    vertical-align: -4px;
+    animation: blink 1.1s steps(1) infinite;
+  }
+  @media (prefers-reduced-motion: reduce){ .cursor{ animation: none; opacity:.7; } }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .hero-title{
+    font-family: var(--mono);
+    font-size: 14.5px;
+    color: var(--text-dim);
+    margin: 0 0 22px;
+  }
+  .hero-title .pipe{ color: var(--text-faint); margin: 0 8px; }
+
+  .term{
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+  .term-bar{
+    display:flex; align-items:center; gap:8px;
+    padding: 9px 14px;
+    background: var(--panel-2);
+    border-bottom: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 11px;
+  }
+  .term-dot{ width:9px; height:9px; border-radius:50%; background: #3a414d; }
+  .term-body{ padding: 16px 18px; color: var(--text-dim); }
+  .term-body .line{ display:flex; gap:10px; padding: 3px 0; }
+  .term-body .k{ color: var(--text-faint); min-width: 86px; flex-shrink:0; }
+  .term-body .v a{ color: var(--text); }
+  .term-body .v a:hover{ color: var(--green); border-bottom-color: var(--green); }
+
+  /* ---------- skills (symbol table) ---------- */
+  .symtab{ display:grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .symgroup{
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 18px 20px 20px;
+  }
+  .symgroup h3{
+    font-family: var(--mono);
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--text-faint);
+    margin: 0 0 14px;
+    font-weight: 500;
+  }
+  .chips{ display:flex; flex-wrap:wrap; gap: 7px; }
+  .chip{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text);
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 4px 9px;
+  }
+  .chip.amber{ color: var(--amber); border-color: rgba(227,164,77,0.35); }
+  .chip.green{ color: var(--green); border-color: rgba(95,211,141,0.35); }
+
+  /* ---------- experience: call stack ---------- */
+  .stack-intro{ color: var(--text-dim); font-size: 14.5px; margin: -14px 0 26px; max-width: 60ch; }
+  .frame{
+    position: relative;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    border-radius: 6px;
+    padding: 20px 22px 22px;
+    margin-bottom: 18px;
+  }
+  .frame::before{
+    content:"";
+    position:absolute; left:-1px; top:0; bottom:0; width:2px;
+    background: var(--green-dim);
+    border-radius: 6px 0 0 6px;
+  }
+  .frame:first-child::before{ background: var(--green); }
+
+  .frame-meta{ display:flex; align-items:baseline; justify-content:space-between; gap:14px; flex-wrap:wrap; margin-bottom:6px; }
+  .frame-id{ font-family: var(--mono); font-size: 12px; color: var(--green); }
+  .frame-dates{ font-family: var(--mono); font-size: 11.5px; color: var(--text-faint); letter-spacing: .03em; }
+
+  .frame-title{ font-size: 18px; font-weight: 700; color: #eef0f3; margin: 0 0 2px; }
+  .frame-role{ font-weight: 400; color: var(--text-dim); font-size: 15px; }
+
+  .frame-bar{ margin: 12px 0 14px; display:flex; align-items:center; gap:10px; }
+  .frame-bar-track{ flex:1; height:6px; background: var(--panel-2); border-radius:3px; overflow:hidden; border: 1px solid var(--border); }
+  .frame-bar-fill{ height:100%; background: linear-gradient(90deg, var(--green-dim), var(--green)); }
+  .frame-bar-label{ font-family: var(--mono); font-size: 10.5px; color: var(--text-faint); white-space:nowrap; }
+
+  .frame-details{ margin: 0 0 14px; padding-left: 20px; color: var(--text-dim); font-size: 14px; }
+  .frame-details li{ margin-bottom: 5px; }
+
+  .frame-tags{ display:flex; flex-wrap:wrap; gap:6px; }
+  .frame-tags .chip{ font-size: 11px; padding: 3px 8px; }
+
+  /* ---------- education ---------- */
+  .build-list{ list-style:none; margin:0; padding:0; border-top: 1px solid var(--border); }
+  .build-item{
+    display:grid; grid-template-columns: 130px 1fr;
+    gap: 18px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .build-tag{ font-family: var(--mono); font-size: 11.5px; color: var(--amber); letter-spacing:.04em; padding-top:2px; }
+  .build-main strong{ color: #eef0f3; font-size: 15.5px; }
+  .build-main div{ color: var(--text-dim); font-size: 14px; margin-top:2px; }
+
+  /* ---------- contact / references ---------- */
+  .contact-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 36px; }
+  .ccard{
+    background: var(--panel); border:1px solid var(--border); border-radius:6px;
+    padding: 16px 18px;
+  }
+  .ccard .role{ font-family: var(--mono); font-size: 10.5px; color: var(--text-faint); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px; }
+  .ccard strong{ display:block; color:#eef0f3; font-size:15px; margin-bottom:4px; }
+  .ccard a, .ccard span{ font-size: 13.5px; color: var(--text-dim); display:block; }
+  .ccard a{ color: var(--text-dim); }
+  .ccard a:hover{ color: var(--green); }
+
+  .note{
+    font-family: var(--mono); font-size: 11.5px; color: var(--text-faint);
+    border-top: 1px dashed var(--border); padding-top: 14px; margin-top: 6px;
+  }
+
+  footer{
+    font-family: var(--mono); font-size: 11px; color: var(--text-faint);
+    padding: 30px 0 0; border-top: 1px solid var(--border);
+  }
+
+  /* ---------- reveal ---------- */
+  .reveal{ opacity:0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 860px){
+    .symtab, .contact-grid{ grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 760px){
+    .rail{
+      position: sticky; top:0; width:100%; height:auto;
+      flex-direction:row; align-items:center; justify-content:flex-start;
+      padding: 10px 14px; overflow-x:auto; gap: 4px;
+      border-right:none; border-bottom: 1px solid var(--border);
+    }
+    .rail-top{ display:flex; align-items:center; gap:16px; padding:0; }
+    .rail-brand{ margin:0; white-space:nowrap; }
+    .rail-list{ display:flex; gap:2px; }
+    .rail-link{ padding: 6px 12px; white-space:nowrap; }
+    .rail-foot{ display:none; }
+    main{ margin-left:0; width:100%; padding: 40px 22px 80px; }
+    .hero h1{ font-size: 30px; }
+  }
+
+  @media print{
+    body{ background:#fff; color:#111; background-image:none; }
+    .rail{ display:none; }
+    main{ margin-left:0; max-width:100%; }
+    .frame, .ccard, .symgroup, .term{ border-color:#ccc; background:#fafafa; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="rail" aria-label="Section navigation">
+  <div class="rail-top">
+    <div class="rail-brand"><b>ken</b>.résumé</div>
+    <ul class="rail-list" id="railList">
+      <li><a href="#top" class="rail-link" data-target="top"><span class="dot"></span>session</a></li>
+      <li><a href="#skills" class="rail-link" data-target="skills"><span class="dot"></span>symbols</a></li>
+      <li><a href="#experience" class="rail-link" data-target="experience"><span class="dot"></span>call stack</a></li>
+      <li><a href="#education" class="rail-link" data-target="education"><span class="dot"></span>build chain</a></li>
+      <li><a href="#contact" class="rail-link" data-target="contact"><span class="dot"></span>handles</a></li>
+    </ul>
+  </div>
+  <div class="rail-foot">trace captured Jun 2026</div>
+</nav>
+
+<main>
+
+  <header id="top" class="hero">
+    <img class="hero-photo" alt="" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4OCIgaGVpZ2h0PSI4OCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzE0MWExMyIvPjwvc3ZnPg==">
+    <h1>Ken D. Gorro<span class="cursor" aria-hidden="true"></span></h1>
+    <p class="hero-title">Doctor in Information Technology<span class="pipe">·</span>Senior C++ / .NET Developer<span class="pipe">·</span>IEEE Member</p>
+
+    <div class="term reveal">
+      <div class="term-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>&nbsp;stdout — profile.session</div>
+      <div class="term-body">
+        <div class="line"><span class="k">tel</span><span class="v">0917 829 0696</span></div>
+        <div class="line"><span class="k">mail</span><span class="v"><a href="mailto:kengorro@gmail.com">kengorro@gmail.com</a></span></div>
+        <div class="line"><span class="k">scholar</span><span class="v"><a href="https://scholar.google.com/citations?user=EoKQJ1kAAAAJ&hl=en" target="_blank" rel="noopener">scholar.google.com/citations?user=EoKQJ1kAAAAJ</a></span></div>
+        <div class="line"><span class="k">scopus</span><span class="v"><a href="https://www.scopus.com/authid/detail.uri?authorId=57201646135" target="_blank" rel="noopener">authorId=57201646135</a></span></div>
+        <div class="line"><span class="k">orcid</span><span class="v"><a href="https://orcid.org/0000-0001-5423-373X" target="_blank" rel="noopener">0000-0001-5423-373X</a></span></div>
+      </div>
+    </div>
+  </header>
+
+  <section id="skills">
+    <p class="eyebrow">resolved symbols</p>
+    <h2>Languages, platforms &amp; AI/ML</h2>
+    <div class="symtab">
+      <div class="symgroup reveal">
+        <h3>Programming languages</h3>
+        <div class="chips">
+          <span class="chip">C</span><span class="chip">C++</span><span class="chip">Java</span>
+          <span class="chip">Python</span><span class="chip">C# (.NET / .NET Core)</span><span class="chip">PHP</span>
+          <span class="chip">JavaScript</span><span class="chip">Ruby on Rails</span><span class="chip">ReactJs</span>
+          <span class="chip">NodeJs (knex, express)</span>
+        </div>
+      </div>
+      <div class="symgroup reveal">
+        <h3>Cloud technologies</h3>
+        <div class="chips">
+          <span class="chip">Azure Cloud Service</span><span class="chip">Azure Workers</span>
+          <span class="chip">Azure Functions</span><span class="chip">Azure DevOps</span>
+          <span class="chip">AWS Lambda</span>
+        </div>
+      </div>
+      <div class="symgroup reveal" style="grid-column: 1 / -1;">
+        <h3>AI / ML experience</h3>
+        <div class="chips">
+          <span class="chip amber">Computer Vision — image processing</span>
+          <span class="chip amber">Computer Vision — video processing</span>
+          <span class="chip amber">Natural Language Processing</span>
+          <span class="chip amber">Large Language Models (OpenAI)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <p class="eyebrow">call stack — most recent frame on top</p>
+    <h2>Work experience</h2>
+    <p class="stack-intro">Read top to bottom, like a profiler trace: frame #0 is the call still running. Bar length is approximate active tenure.</p>
+
+    <div class="frame reveal">
+      <div class="frame-meta"><span class="frame-id">#0</span><span class="frame-dates">AUG 2018 — PRESENT</span></div>
+      <h3 class="frame-title">Stackify <span class="frame-role">— Web Developer &amp; Senior C++ Developer</span></h3>
+      <div class="frame-bar"><div class="frame-bar-track"><div class="frame-bar-fill" style="width:100%"></div></div><span class="frame-bar-label">≈94 mo active</span></div>
+      <ul class="frame-details">
+        <li>Built a .NET profiler in C++ using the Boost library, targeting Windows.</li>
+        <li>Extended the profiler to .NET Core, supporting both Windows and Linux.</li>
+        <li>Wrote the Windows agent in C# (.NET).</li>
+        <li>Set up Azure DevOps pipelines for automated Windows and Linux builds.</li>
+        <li>Dockerized the Windows agent.</li>
+      </ul>
+      <div class="frame-tags">
+        <span class="chip">C++ / Boost</span><span class="chip">C# .NET</span><span class="chip">Docker</span>
+        <span class="chip">Azure DevOps</span><span class="chip">NodeJs</span><span class="chip">AWS Lambda</span>
+      </div>
+    </div>
+
+    <div class="frame reveal">
+      <div class="frame-meta"><span class="frame-id">#1</span><span class="frame-dates">JUL 2020 — SEP 2020</span></div>
+      <h3 class="frame-title">BreezySolutions <span class="frame-role">— Right Angle Engineering Management System / BreezyBreeding</span></h3>
+      <div class="frame-bar"><div class="frame-bar-track"><div class="frame-bar-fill" style="width:2%"></div></div><span class="frame-bar-label">≈2 mo</span></div>
+      <ul class="frame-details">
+        <li>Right Angle Engineering Management System: Ruby on Rails, jQuery, Redis, Sidekiq, MySQL.</li>
+        <li>BreezyBreeding: Ruby on Rails, ReactJs, PostgreSQL.</li>
+      </ul>
+      <div class="frame-tags">
+        <span class="chip">Ruby on Rails</span><span class="chip">Redis</span><span class="chip">Sidekiq</span>
+        <span class="chip">ReactJs</span><span class="chip">PostgreSQL</span><span class="chip">MySQL</span>
+      </div>
+    </div>
+
+    <div class="frame reveal">
+      <div class="frame-meta"><span class="frame-id">#2</span><span class="frame-dates">FEB 2018 — MAY 2019</span></div>
+      <h3 class="frame-title">CES <span class="frame-role">— IT Developer &amp; Research Assistant at PCARI</span></h3>
+      <div class="frame-bar"><div class="frame-bar-track"><div class="frame-bar-fill" style="width:16%"></div></div><span class="frame-bar-label">≈15 mo</span></div>
+      <ul class="frame-details">
+        <li>Used Java for machine learning work on the PCARI research project.</li>
+      </ul>
+      <div class="frame-tags"><span class="chip amber">Java</span><span class="chip amber">Machine Learning</span></div>
+    </div>
+
+    <div class="frame reveal">
+      <div class="frame-meta"><span class="frame-id">#3</span><span class="frame-dates">JUN 2016 — JUN 2020</span></div>
+      <h3 class="frame-title">University of San Carlos <span class="frame-role">— Part-time Faculty → ICT Coordinator (DCIS, full-time) → Part-time Faculty</span></h3>
+      <div class="frame-bar"><div class="frame-bar-track"><div class="frame-bar-fill" style="width:51%"></div></div><span class="frame-bar-label">≈48 mo</span></div>
+      <ul class="frame-details">
+        <li>Machine learning research using C++ and Python.</li>
+        <li>Image processing work in Java.</li>
+      </ul>
+      <div class="frame-tags"><span class="chip amber">C++</span><span class="chip amber">Python</span><span class="chip">Java</span></div>
+    </div>
+
+    <div class="frame reveal">
+      <div class="frame-meta"><span class="frame-id">#4</span><span class="frame-dates">APR 2014 — JUN 2017</span></div>
+      <h3 class="frame-title">Kyocera Document Solutions <span class="frame-role">— Systems Engineer II (C++)</span></h3>
+      <div class="frame-bar"><div class="frame-bar-track"><div class="frame-bar-fill" style="width:40%"></div></div><span class="frame-bar-label">≈38 mo</span></div>
+      <ul class="frame-details">
+        <li>Raster image processing for printers in an ARM environment, using C++ and Boost.</li>
+        <li>Implemented Google Cloud Print support in C++ — image processing for PWG rasters.</li>
+        <li>Built a Java test utility to generate test cases for raster image processing.</li>
+      </ul>
+      <div class="frame-tags"><span class="chip">C++ / Boost</span><span class="chip">ARM</span><span class="chip">Java</span><span class="chip">Google Cloud Print</span></div>
+    </div>
+  </section>
+
+  <section id="education">
+    <p class="eyebrow amber">build chain</p>
+    <h2>Educational background</h2>
+    <ul class="build-list">
+      <li class="build-item reveal">
+        <span class="build-tag">GRADUATE</span>
+        <div class="build-main">
+          <strong>Doctor in Information Technology</strong>
+          <div>Cebu Institute of Technology University</div>
+        </div>
+      </li>
+      <li class="build-item reveal">
+        <span class="build-tag">GRADUATE</span>
+        <div class="build-main">
+          <strong>Master of Science in Information Technology</strong>
+          <div>University of San Carlos — Talamban Campus, Cebu City</div>
+        </div>
+      </li>
+      <li class="build-item reveal">
+        <span class="build-tag">TERTIARY</span>
+        <div class="build-main">
+          <strong>Bachelor of Science in Information Technology</strong>
+          <div>University of San Carlos — Talamban Campus, Cebu City</div>
+        </div>
+      </li>
+      <li class="build-item reveal">
+        <span class="build-tag">SECONDARY</span>
+        <div class="build-main">
+          <strong>Secondary education</strong>
+          <div>University of San Carlos — South Campus, Cebu City</div>
+        </div>
+      </li>
+      <li class="build-item reveal">
+        <span class="build-tag">PRIMARY</span>
+        <div class="build-main">
+          <strong>Primary education</strong>
+          <div>St. Paul College Foundation</div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <p class="eyebrow">linked handles</p>
+    <h2>References</h2>
+    <div class="contact-grid">
+      <div class="ccard reveal">
+        <div class="role">Software Engineer · Aboitiz</div>
+        <strong>Moustafa Ali, MSIT</strong>
+        <span>0945 381 9403</span>
+        <a href="mailto:moustafing.ali@gmail.com">moustafing.ali@gmail.com</a>
+      </div>
+      <div class="ccard reveal">
+        <div class="role">Cebu Technological University</div>
+        <strong>Anthony Ilano, PhD</strong>
+        <span>0961 817 7370</span>
+        <a href="mailto:anthony.ilano@ctu.edu.ph">anthony.ilano@ctu.edu.ph</a>
+      </div>
+      <div class="ccard reveal">
+        <div class="role">Former Professor, University of San Carlos</div>
+        <strong>Mary Jane Sabellano, MSIT</strong>
+        <a href="mailto:marjaga9@yahoo.com">marjaga9@yahoo.com</a>
+      </div>
+    </div>
+    <p class="note">// publishing personal phone numbers/emails of references on a public page is visible to anyone — swap to "available on request" if that's a concern.</p>
+  </section>
+
+  <footer>
+    ken-gorro · resume.trace · built for static hosting (GitHub Pages)
+  </footer>
+
+</main>
+
+<script>
+  // active section highlight in rail
+  const links = document.querySelectorAll('.rail-link');
+  const sections = document.querySelectorAll('main section, main header');
+  const map = new Map();
+  links.forEach(l => map.set(l.dataset.target, l));
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = map.get(entry.target.id);
+      if (!link) return;
+      if (entry.isIntersecting){
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+
+  sections.forEach(s => obs.observe(s));
+
+  // reveal-on-scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => revealObs.observe(el));
+</script>
+
+</body>
+</html>
